@@ -2,11 +2,9 @@ import React, { Component } from "react";
 import SortBar from "./SortBar";
 
 class RoverPage extends Component {
-    roverNames = ["Perseverance", "Curiosity", "Opportunity", "Spirit"];
-
     state = {
         images: [],
-        roverName: this.roverNames[1],
+        roverName: this.props.roverName,
         pageNum: 1,
         urlToSearch: "",
     };
@@ -24,6 +22,7 @@ class RoverPage extends Component {
     };
 
     getSearch = (urlToSearch) => {
+        console.log(urlToSearch);
         this.setState({ urlToSearch });
     };
 

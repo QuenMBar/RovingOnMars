@@ -1,10 +1,10 @@
 import React, { Component } from "react";
-import { Button, Form, Input, Radio, Select, Message } from "semantic-ui-react";
+import { Button, Form, Input, Radio, Select } from "semantic-ui-react";
 
 export default class SortBar extends Component {
     roverDetails = [
         {
-            name: "Perseverance",
+            name: "perseverance",
             cameras: [
                 "NAVCAM_LEFT",
                 "NAVCAM_RIGHT",
@@ -18,9 +18,9 @@ export default class SortBar extends Component {
                 "SHERLOC_WATSON",
             ],
         },
-        { name: "Curiosity", cameras: ["FHAZ", "RHAZ", "MAST", "CHEMCAM", "MAHLI", "MARDI", "NAVCAM"] },
-        { name: "Opportunity", cameras: ["FHAZ", "RHAZ", "NAVCAM", "PANCAM", "MINITES"] },
-        { name: "Spirit", cameras: ["FHAZ", "RHAZ", "NAVCAM", "PANCAM", "MINITES"] },
+        { name: "curiosity", cameras: ["FHAZ", "RHAZ", "MAST", "CHEMCAM", "MAHLI", "MARDI", "NAVCAM"] },
+        { name: "opportunity", cameras: ["FHAZ", "RHAZ", "NAVCAM", "PANCAM", "MINITES"] },
+        { name: "spirit", cameras: ["FHAZ", "RHAZ", "NAVCAM", "PANCAM", "MINITES"] },
     ];
 
     cameraNames = {
