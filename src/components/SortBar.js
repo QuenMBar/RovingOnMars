@@ -138,127 +138,85 @@ export default class SortBar extends Component {
 
     render() {
         return (
-            <div>
-                {this.state.invalidDate || this.state.invalidSol ? (
-                    <Form className="parentForm" error>
-                        <Form.Group className="sortForm" inline>
-                            <Form.Field
-                                control={Select}
-                                label="Camera Select"
-                                placeholder="None"
-                                options={this.state.options}
-                                value={this.state.selectedCamera}
-                                onChange={this.handleCameraChange}
-                            />
-                            <label>Date Type</label>
-                            <Form.Field
-                                control={Radio}
-                                label="Earth Date"
-                                value="0"
-                                checked={this.state.dateType === "0"}
-                                onChange={this.handleRadioChange}
-                            />
-                            <Form.Field
-                                control={Radio}
-                                label="Sol"
-                                value="1"
-                                checked={this.state.dateType === "1"}
-                                onChange={this.handleRadioChange}
-                            />
-                            {this.state.dateType === "0" ? (
-                                <div>
-                                    <Form.Field
-                                        control={Input}
-                                        label="Earth Date"
-                                        value={this.state.date}
-                                        placeholder={this.state.date}
-                                        onChange={this.handleDateChange}
-                                    />
-                                    <Message
-                                        error
-                                        header="Incorrect Format"
-                                        content="Your earth date must match the for YYYY-MM-DD."
-                                        className="message"
-                                    />
-                                </div>
+            <Form className="parentForm" error>
+                <Form.Group className="sortForm" inline>
+                    <Form.Field
+                        control={Select}
+                        label="Camera Select"
+                        placeholder="None"
+                        options={this.state.options}
+                        value={this.state.selectedCamera}
+                        onChange={this.handleCameraChange}
+                    />
+                    <label>Date Type</label>
+                    <Form.Field
+                        control={Radio}
+                        label="Earth Date"
+                        value="0"
+                        checked={this.state.dateType === "0"}
+                        onChange={this.handleRadioChange}
+                    />
+                    <Form.Field
+                        control={Radio}
+                        label="Sol"
+                        value="1"
+                        checked={this.state.dateType === "1"}
+                        onChange={this.handleRadioChange}
+                    />
+                    {this.state.dateType === "0" ? (
+                        <div>
+                            {this.state.invalidDate ? (
+                                <Form.Field
+                                    control={Input}
+                                    label="Earth Date"
+                                    value={this.state.date}
+                                    placeholder={this.state.date}
+                                    onChange={this.handleDateChange}
+                                    error={{
+                                        content: "Your earth date must match the for YYYY-MM-DD.",
+                                        pointing: "below",
+                                    }}
+                                />
                             ) : (
-                                <div>
-                                    <Form.Field
-                                        control={Input}
-                                        label="Sol"
-                                        value={this.state.sol}
-                                        placeholder={this.state.sol}
-                                        onChange={this.handleSolChange}
-                                    />
-                                    <Message error header="Incorrect Format" content="Your sol must be one number." />
-                                </div>
+                                <Form.Field
+                                    control={Input}
+                                    label="Earth Date"
+                                    value={this.state.date}
+                                    placeholder={this.state.date}
+                                    onChange={this.handleDateChange}
+                                />
                             )}
-                            <Form.Field onClick={this.handleSub} control={Button}>
-                                Submit
-                            </Form.Field>
-                        </Form.Group>
-                    </Form>
-                ) : (
-                    <Form className="parentForm">
-                        <Form.Group className="sortForm" inline>
-                            <Form.Field
-                                control={Select}
-                                label="Camera Select"
-                                placeholder="None"
-                                options={this.state.options}
-                                value={this.state.selectedCamera}
-                                onChange={this.handleCameraChange}
-                            />
-                            <label>Date Type</label>
-                            <Form.Field
-                                control={Radio}
-                                label="Earth Date"
-                                value="0"
-                                checked={this.state.dateType === "0"}
-                                onChange={this.handleRadioChange}
-                            />
-                            <Form.Field
-                                control={Radio}
-                                label="Sol"
-                                value="1"
-                                checked={this.state.dateType === "1"}
-                                onChange={this.handleRadioChange}
-                            />
-                            {this.state.dateType === "0" ? (
-                                <div>
-                                    <Form.Field
-                                        control={Input}
-                                        label="Earth Date"
-                                        value={this.state.date}
-                                        placeholder={this.state.date}
-                                        onChange={this.handleDateChange}
-                                    />
-                                    <Message
-                                        error
-                                        header="Incorrect Format"
-                                        content="Your earth date must match the for YYYY-MM-DD."
-                                        className="message"
-                                    />
-                                </div>
+                        </div>
+                    ) : (
+                        <div>
+                            {this.state.invalidSol ? (
+                                <Form.Field
+                                    control={Input}
+                                    label="Sol"
+                                    value={this.state.sol}
+                                    placeholder={this.state.sol}
+                                    onChange={this.handleSolChange}
+                                    error={{
+                                        content: "Your sol must be a number.",
+                                        pointing: "below",
+                                    }}
+                                />
                             ) : (
-                                <div>
-                                    <Form.Field
-                                        control={Input}
-                                        label="Sol"
-                                        value={this.state.sol}
-                                        placeholder={this.state.sol}
-                                        onChange={this.handleSolChange}
-                                    />
-                                    <Message error header="Incorrect Format" content="Your sol must be one number." />
-                                </div>
+                                <Form.Field
+                                    control={Input}
+                                    label="Sol"
+                                    value={this.state.sol}
+                                    placeholder={this.state.sol}
+                                    onChange={this.handleSolChange}
+                                />
                             )}
-                            <Form.Field onClick={this.handleSub} control={Button}>
-                                Submit
-                            </Form.Field>
-                        </Form.Group>
-                    </Form>
-                )}
-            </div>
+                        </div>
+                    )}
+                    <Form.Field onClick={this.handleSub} control={Button}>
+                        Submit
+                    </Form.Field>
+                </Form.Group>
+            </Form>
         );
     }
 }
