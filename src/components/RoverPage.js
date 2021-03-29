@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import SortBar from "./SortBar";
+import ImgCardContain from "./ImgCardContain";
 
 class RoverPage extends Component {
     state = {
@@ -47,17 +48,7 @@ class RoverPage extends Component {
                     </button>
                     <h3>Page {this.state.pageNum}</h3>
                 </div>
-                <div className="ui three stackable cards">
-                    {this.state.images.map((image) => {
-                        return (
-                            <div className="card">
-                                <div className="image">
-                                    <img src={image.img_src} alt="img" />
-                                </div>
-                            </div>
-                        );
-                    })}
-                </div>
+                <ImgCardContain images={this.state.images} />
             </div>
         );
     }
