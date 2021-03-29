@@ -32,7 +32,7 @@ Project needs
 
 ## Wire Frame
 
-![mockUp](./../assets/WireFrame%20Poject%202.jpg)
+![mockUp](./assets/WireFrame%20Poject%202.jpg)
 
 ## APIS
 
