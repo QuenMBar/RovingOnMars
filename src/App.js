@@ -1,5 +1,5 @@
 import "./App.css";
-import RoverPage from './components/RoverPage'
+import RoverPage from "./components/RoverPage";
 
 function App() {
     return (
