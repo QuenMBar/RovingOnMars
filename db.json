@@ -1,3 +1,23 @@
 {
-    "photos": []
+  "photos": [
+    {
+      "id": 813085,
+      "sol": 10,
+      "camera": {
+        "id": 38,
+        "name": "NAVCAM_LEFT",
+        "rover_id": 8,
+        "full_name": "Navigation Camera - Left"
+      },
+      "img_src": "https://mars.nasa.gov/mars2020-raw-images/pub/ods/surface/sol/00010/ids/edr/browse/ncam/NLE_0010_0667834979_567ECM_N0030000NCAM00130_00_0LLJ01_1200.jpg",
+      "earth_date": "2021-02-28",
+      "rover": {
+        "id": 8,
+        "name": "Perseverance",
+        "landing_date": "2021-02-18",
+        "launch_date": "2020-07-30",
+        "status": "active"
+      }
+    }
+  ]
 }
