@@ -132,7 +132,7 @@ export default class SortBar extends Component {
     componentDidMount() {
         let returnURL = `https://api.nasa.gov/mars-photos/api/v1/rovers/${this.state.roverName.toLowerCase()}/photos?api_key=${
             this.apiKey
-        }&earth_date=${this.state.date}`;
+        }&sol=10`;
         this.props.getSearch(returnURL);
     }
 
