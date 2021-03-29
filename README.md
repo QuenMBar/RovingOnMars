@@ -1,5 +1,7 @@
 # PROJECT 2
 
+## Project Requirements
+
 Build a React single page application from scratch
 Apply your knowledge of components, props and state management
 Incorporate client-side routing
@@ -12,21 +14,28 @@ Project needs
 2. Api
 3. db.json
 
-Mars rover app:
+## User Stories
 
-- Multiple tabs with different rovers on it
-- On each tab, filter between cameras and dates
-- (Stretch-ish: Show location of photo)
-- Be able to favorite photos and they'll go on home page
+### Mars rover app
 
-Stretch:
+- The user should be able to chose between multiple tabs with different rovers on it
+- The user should be able to, on each tab, filter between cameras and dates
+- The user should be able to see the location of photo
+- The user should be able to favorite photos and they'll go on home page
 
-- Photo of the day on home page
-- Notifications of upcoming events
-- Weather at rover
-- Display how close near earth objects will be for the next several days
+### Stretch
 
-APIS:
+- The user should be able to see the photo of the day on home page
+- The user should be able to see notifications of upcoming events
+- The user should be able to the weather at rover
+- The user should be able to see how close near earth objects will be for the next several days
+
+## Wire Frame
+
+![mockUp](./../assets/WireFrame%20Poject%202.jpg)
+
+## APIS
+
 | Api                   | Example                                                                                                    |
 | --------------------- | ---------------------------------------------------------------------------------------------------------- |
 | Mars Rover Photos     | https://api.nasa.gov/mars-photos/api/v1/rovers/curiosity/photos?sol=1000&api_key=DEMO_KEY                  |
@@ -35,4 +44,6 @@ APIS:
 | Asteroids - NeoWs     | https://api.nasa.gov/neo/rest/v1/feed?start_date=2015-09-07&end_date=2015-09-08&api_key=DEMO_KEY           |
 | InSight: Mars Weather | https://api.nasa.gov/insight_weather/?api_key=DEMO_KEY&feedtype=json&ver=1.0                               |
 
-Backup Weather App
+## JSON Server
+
+Using an json server to persist the favorites of users between refreshes
