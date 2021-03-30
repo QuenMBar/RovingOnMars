@@ -1,4 +1,4 @@
-import React, { Component, Fragment } from "react";
+import React, { Fragment } from "react";
 import "semantic-ui-css/semantic.min.css";
 import { Modal, Image, Button } from "semantic-ui-react";
 
@@ -23,7 +23,7 @@ const ImageOfTheDay = (props) => {
                             <img src={props.imageOfTheDay.url} />
                         </div>
                         <div className="content">
-                            <a className="header">Title: {props.imageOfTheDay.title}</a>
+                            <p className="header">Title: {props.imageOfTheDay.title}</p>
                             <div class="meta">
                                 <span>Explanation</span>
                             </div>

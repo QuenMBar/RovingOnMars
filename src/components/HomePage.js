@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import ImgCardContain from "./ImgCardContain";
 import ImageOfTheDay from "./ImageOfTheDay";
-import { Grid, Image } from "semantic-ui-react";
+import { Grid } from "semantic-ui-react";
 
 export default class HomePage extends Component {
     constructor() {
