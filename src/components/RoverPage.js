@@ -11,6 +11,7 @@ class RoverPage extends Component {
     };
 
     componentDidUpdate(previousProps, previousState) {
+        // !FIXME Page calls fetch twice when loading a new search result when not on page one since its calling fetch on new url and the new page num
         if (previousState.pageNum !== this.state.pageNum) {
             this.fetchPhotos(this.state.pageNum);
         }
