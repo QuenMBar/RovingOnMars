@@ -15,6 +15,7 @@ export default class ImgCardContain extends Component {
                 this.setState({
                     currentFavs: [...this.state.currentFavs, data],
                 });
+                this.props.grabFavorites()
             })
             .catch((error) => {
                 console.error("Error:", error);
@@ -34,6 +35,7 @@ export default class ImgCardContain extends Component {
                 this.setState({
                     currentFavs: [...this.state.currentFavs.slice(0, ind), ...this.state.currentFavs.slice(ind + 1)],
                 });
+                this.props.grabFavorites()
             })
             .catch((error) => {
                 console.error("Error:", error);
@@ -41,7 +43,7 @@ export default class ImgCardContain extends Component {
     };
 
     state = {
-        currentFavs: [],
+        currentFavs: []
     };
 
     componentDidMount() {
