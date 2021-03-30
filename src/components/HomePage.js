@@ -38,7 +38,7 @@ export default class HomePage extends Component {
         <h2>Image of the Day</h2>
         <ImageOfTheDay imageOfTheDay={this.state.imageOfTheDay}/>
         </div>
-        <div>
+        <div className="ui container">
           <h2>Favorite Images</h2>
           <ImgCardContain images={this.state.favorites} grabFavorites={this.grabFavorites}/>
         </div>
