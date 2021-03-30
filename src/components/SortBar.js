@@ -75,7 +75,7 @@ export default class SortBar extends Component {
             cameras: cameras,
             options: options,
             selectedCamera: "none",
-            dateType: "0",
+            dateType: "1",
             date: date,
             invalidSol: false,
             invalidDate: false,
@@ -174,7 +174,6 @@ export default class SortBar extends Component {
                                     onChange={this.handleDateChange}
                                     error={{
                                         content: "Your earth date must match the for YYYY-MM-DD.",
-                                        pointing: "below",
                                     }}
                                 />
                             ) : (
@@ -198,7 +197,6 @@ export default class SortBar extends Component {
                                     onChange={this.handleSolChange}
                                     error={{
                                         content: "Your sol must be a number.",
-                                        pointing: "below",
                                     }}
                                 />
                             ) : (

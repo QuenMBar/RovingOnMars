@@ -11,19 +11,27 @@ class RoverPage extends Component {
     };
 
     componentDidUpdate(previousProps, previousState) {
-        if (previousState.pageNum !== this.state.pageNum || previousState.urlToSearch !== this.state.urlToSearch) {
-            this.fetchPhotos();
+        if (previousState.pageNum !== this.state.pageNum) {
+            this.fetchPhotos(this.state.pageNum);
+        }
+        if (previousState.urlToSearch !== this.state.urlToSearch) {
+            this.fetchPhotos(1);
         }
     }
 
-    fetchPhotos = () => {
-        fetch(this.state.urlToSearch + `&page=${this.state.pageNum}`)
+    fetchPhotos = (pageNum) => {
+        console.log("here");
+        fetch(this.state.urlToSearch + `&page=${pageNum}`)
             .then((res) => res.json())
-            .then((images) => this.setState({ images: images.photos }));
+            .then((images) =>
+                this.setState({
+                    images: images.photos,
+                    pageNum: pageNum,
+                })
+            );
     };
 
     getSearch = (urlToSearch) => {
-        console.log(urlToSearch);
         this.setState({ urlToSearch });
     };
 
