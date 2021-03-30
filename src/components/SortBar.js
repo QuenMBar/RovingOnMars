@@ -75,7 +75,7 @@ export default class SortBar extends Component {
             cameras: cameras,
             options: options,
             selectedCamera: "none",
-            dateType: "0",
+            dateType: "1",
             date: date,
             invalidSol: false,
             invalidDate: false,
@@ -132,7 +132,7 @@ export default class SortBar extends Component {
     componentDidMount() {
         let returnURL = `https://api.nasa.gov/mars-photos/api/v1/rovers/${this.state.roverName.toLowerCase()}/photos?api_key=${
             this.apiKey
-        }&earth_date=${this.state.date}`;
+        }&sol=10`;
         this.props.getSearch(returnURL);
     }
 
@@ -174,7 +174,6 @@ export default class SortBar extends Component {
                                     onChange={this.handleDateChange}
                                     error={{
                                         content: "Your earth date must match the for YYYY-MM-DD.",
-                                        pointing: "below",
                                     }}
                                 />
                             ) : (
@@ -198,7 +197,6 @@ export default class SortBar extends Component {
                                     onChange={this.handleSolChange}
                                     error={{
                                         content: "Your sol must be a number.",
-                                        pointing: "below",
                                     }}
                                 />
                             ) : (
