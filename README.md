@@ -20,7 +20,7 @@ Project needs
 
 - The user should be able to chose between multiple tabs with different rovers on it
 - The user should be able to, on each tab, filter between cameras and dates
-- The user should be able to see the location of photo
+- The user should be able to interact with the photos
 - The user should be able to favorite photos and they'll go on home page
 
 ### Stretch

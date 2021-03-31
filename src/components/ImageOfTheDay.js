@@ -1,27 +1,41 @@
-import React, { Component } from "react";
-import 'semantic-ui-css/semantic.min.css'
+import React, { Fragment } from "react";
+import "semantic-ui-css/semantic.min.css";
+import { Modal, Image, Button } from "semantic-ui-react";
 
-export default class ImageOfTheDay extends Component {
-  render() {
+const ImageOfTheDay = (props) => {
+    const [open, setOpen] = React.useState(false);
     return (
-      <div className="ImageOfTheDay ui container">
-        <div className="ui items">
-          <div className="item">
-            <div className="ui medium image">
-              <img src={this.props.imageOfTheDay.url}/>
+        <Fragment>
+            <Modal size="large" onClose={() => setOpen(false)} onOpen={() => setOpen(true)} open={open}>
+                <Modal.Content image>
+                    <Image size="fullscreen" src={props.imageOfTheDay.url} wrapped />
+                </Modal.Content>
+                <Modal.Actions>
+                    <Button onClick={() => setOpen(false)} positive>
+                        Ok
+                    </Button>
+                </Modal.Actions>
+            </Modal>
+            <div className="ImageOfTheDay ui container">
+                <div className="ui items">
+                    <div className="item">
+                        <div onClick={() => setOpen(true)} className="ui medium image">
+                            <img src={props.imageOfTheDay.url} />
+                        </div>
+                        <div className="content">
+                            <p className="header">Title: {props.imageOfTheDay.title}</p>
+                            <div class="meta">
+                                <span>Explanation</span>
+                            </div>
+                            <div className="description">
+                                <p>{props.imageOfTheDay.explanation}</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
-            <div className="content">
-              <a className="header">Title: {this.props.imageOfTheDay.title}</a>
-              <div class="meta">
-                <span>Explanation</span>
-              </div>
-              <div className="description">
-                <p>{this.props.imageOfTheDay.explanation}</p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    )
-  }
-}
+        </Fragment>
+    );
+};
+
+export default ImageOfTheDay;
