@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import ImgCardContain from "./ImgCardContain";
 import ImageOfTheDay from "./ImageOfTheDay";
 import { Grid } from "semantic-ui-react";
+import SpaceNotif from "./SpaceNotif";
 
 export default class HomePage extends Component {
     constructor() {
@@ -34,7 +35,7 @@ export default class HomePage extends Component {
         return (
             <Grid columns={2} divided>
                 <Grid.Column width="4">
-                    <h2>SPACE NOTIFICATIONS!</h2>
+                    <SpaceNotif apiKey={this.apiKey} />
                 </Grid.Column>
                 <Grid.Column width="12">
                     <div className="mainContain">
