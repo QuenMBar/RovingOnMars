@@ -45,10 +45,11 @@ export default class SpaceNotif extends Component {
         return (
             <Fragment>
                 <h2>SPACE NOTIFICATIONS!</h2>
-                {/* <Card.Group centered items={this.state.notiifs} /> */}
-                {this.state.notiifs.map((note) => (
-                    <NotifCard notifs={note} />
-                ))}
+                <Card.Group centered>
+                    {this.state.notiifs.map((note) => (
+                        <NotifCard notifs={note} />
+                    ))}
+                </Card.Group>
             </Fragment>
         );
     }
