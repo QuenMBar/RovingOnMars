@@ -7,7 +7,7 @@ const ImgCard = (props) => {
         <Fragment>
             <Modal size="large" onClose={() => setOpen(false)} onOpen={() => setOpen(true)} open={open}>
                 <Modal.Content image>
-                    <Image size="fullscreen" src={props.data.img_src} wrapped />
+                    <Image src={props.data.img_src} wrapped />
                 </Modal.Content>
                 <Modal.Actions>
                     <Button onClick={() => setOpen(false)} positive>
@@ -29,11 +29,13 @@ const ImgCard = (props) => {
                 </Card.Content>
                 <Card.Content extra>
                     {!props.isFav ? (
+                        // eslint-disable-next-line
                         <a onClick={() => props.handleCard(props.data)}>
                             <Icon name="heart outline" />
                             Add to favorites
                         </a>
                     ) : (
+                        // eslint-disable-next-line
                         <a onClick={() => props.handleCard(props.data)}>
                             <Icon name="heart" />
                             Remove from favorites

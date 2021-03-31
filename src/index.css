@@ -11,5 +11,11 @@ code {
 }
 
 .parentForm {
-    padding-left: 100px;
+    padding-left: 8%;
+    padding-top: 1%;
+}
+
+.pageDiv {
+    display: inline-block;
+    padding-inline: 50px;
 }

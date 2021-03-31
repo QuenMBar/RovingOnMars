@@ -3,7 +3,7 @@
 }
 
 .ImageOfTheDay {
-  text-align: left;
+    text-align: left;
 }
 
 .App-logo {
@@ -39,4 +39,30 @@
     to {
         transform: rotate(360deg);
     }
+}
+
+.homeMain {
+    margin-top: 50px;
+}
+
+.headerContain {
+    margin-top: 40px;
+}
+
+.imgContain {
+    padding: 40px;
+    padding-left: 100px;
+    padding-right: 100px;
+}
+
+.mainDivRover {
+    padding-bottom: 40px;
+}
+
+.radials {
+    padding-right: 1.5%;
+}
+
+.inputForm {
+    padding-right: 1.5%;
 }

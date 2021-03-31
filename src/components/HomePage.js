@@ -5,14 +5,11 @@ import { Grid } from "semantic-ui-react";
 import SpaceNotif from "./SpaceNotif";
 
 export default class HomePage extends Component {
-    constructor() {
-        super();
-        this.apiKey = "pJdnVcrflczALUMfVkmcIHLcXidkGpEN6tEcArH8";
-        this.state = {
-            favorites: [],
-            imageOfTheDay: "",
-        };
-    }
+    apiKey = this.props.apiKey;
+    state = {
+        favorites: [],
+        imageOfTheDay: "",
+    };
 
     componentDidMount() {
         this.grabFavorites();
@@ -33,19 +30,23 @@ export default class HomePage extends Component {
 
     render() {
         return (
-            <Grid columns={2} divided>
+            <Grid columns={2} divided stackable>
                 <Grid.Column width="4">
                     <SpaceNotif apiKey={this.apiKey} />
                 </Grid.Column>
                 <Grid.Column width="12">
                     <div className="mainContain">
-                        <div>
+                        <div className="ui headerContain">
                             <h2>Image of the Day</h2>
                             <ImageOfTheDay imageOfTheDay={this.state.imageOfTheDay} />
                         </div>
-                        <div className="ui container">
+                        <div className="ui container homeMain">
                             <h2>Favorite Images</h2>
-                            <ImgCardContain images={this.state.favorites} grabFavorites={this.grabFavorites} />
+                            <ImgCardContain
+                                boarder={false}
+                                images={this.state.favorites}
+                                grabFavorites={this.grabFavorites}
+                            />
                         </div>
                     </div>
                 </Grid.Column>

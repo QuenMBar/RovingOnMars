@@ -69,7 +69,7 @@ export default class SortBar extends Component {
         } else {
             date += `${dateDay}`;
         }
-        this.apiKey = "pJdnVcrflczALUMfVkmcIHLcXidkGpEN6tEcArH8";
+        this.apiKey = this.props.apiKey;
         this.state = {
             roverName: this.props.roverName,
             cameras: cameras,
@@ -147,68 +147,69 @@ export default class SortBar extends Component {
                         options={this.state.options}
                         value={this.state.selectedCamera}
                         onChange={this.handleCameraChange}
+                        width={3}
                     />
-                    <label>Date Type</label>
-                    <Form.Field
-                        control={Radio}
-                        label="Earth Date"
-                        value="0"
-                        checked={this.state.dateType === "0"}
-                        onChange={this.handleRadioChange}
-                    />
-                    <Form.Field
-                        control={Radio}
-                        label="Sol"
-                        value="1"
-                        checked={this.state.dateType === "1"}
-                        onChange={this.handleRadioChange}
-                    />
+                    <Form.Group className="radials" widths={1} inline>
+                        <label>Date Type</label>
+                        <Form.Field
+                            control={Radio}
+                            label="Earth Date"
+                            value="0"
+                            checked={this.state.dateType === "0"}
+                            onChange={this.handleRadioChange}
+                        />
+                        <Form.Field
+                            control={Radio}
+                            label="Sol"
+                            value="1"
+                            checked={this.state.dateType === "1"}
+                            onChange={this.handleRadioChange}
+                        />
+                    </Form.Group>
                     {this.state.dateType === "0" ? (
-                        <div>
-                            {this.state.invalidDate ? (
-                                <Form.Field
-                                    control={Input}
-                                    label="Earth Date"
-                                    value={this.state.date}
-                                    placeholder={this.state.date}
-                                    onChange={this.handleDateChange}
-                                    error={{
-                                        content: "Your earth date must match the for YYYY-MM-DD.",
-                                    }}
-                                />
-                            ) : (
-                                <Form.Field
-                                    control={Input}
-                                    label="Earth Date"
-                                    value={this.state.date}
-                                    placeholder={this.state.date}
-                                    onChange={this.handleDateChange}
-                                />
-                            )}
-                        </div>
+                        this.state.invalidDate ? (
+                            <Form.Field
+                                control={Input}
+                                label="Earth Date"
+                                value={this.state.date}
+                                placeholder={this.state.date}
+                                onChange={this.handleDateChange}
+                                className="inputForm"
+                                error={{
+                                    content: "Your earth date must match the for YYYY-MM-DD.",
+                                }}
+                            />
+                        ) : (
+                            <Form.Field
+                                control={Input}
+                                label="Earth Date"
+                                value={this.state.date}
+                                placeholder={this.state.date}
+                                onChange={this.handleDateChange}
+                                className="inputForm"
+                            />
+                        )
+                    ) : this.state.invalidSol ? (
+                        <Form.Field
+                            control={Input}
+                            label="Sol"
+                            value={this.state.sol}
+                            placeholder={this.state.sol}
+                            onChange={this.handleSolChange}
+                            className="inputForm"
+                            error={{
+                                content: "Your sol must be a number.",
+                            }}
+                        />
                     ) : (
-                        <div>
-                            {this.state.invalidSol ? (
-                                <Form.Field
-                                    control={Input}
-                                    label="Sol"
-                                    value={this.state.sol}
-                                    placeholder={this.state.sol}
-                                    onChange={this.handleSolChange}
-                                    error={{
-                                        content: "Your sol must be a number.",
-                                    }}
-                                />
-                            ) : (
-                                <Form.Field
-                                    control={Input}
-                                    label="Sol"
-                                    value={this.state.sol}
-                                    placeholder={this.state.sol}
-                                    onChange={this.handleSolChange}
-                                />
-                            )}
-                        </div>
+                        <Form.Field
+                            control={Input}
+                            label="Sol"
+                            value={this.state.sol}
+                            placeholder={this.state.sol}
+                            onChange={this.handleSolChange}
+                            className="inputForm"
+                        />
                     )}
                     <Form.Field onClick={this.handleSub} control={Button}>
                         Submit
