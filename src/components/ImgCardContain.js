@@ -15,7 +15,6 @@ export default class ImgCardContain extends Component {
                 this.setState({
                     currentFavs: [...this.state.currentFavs, data],
                 });
-                this.props.grabFavorites()
             })
             .catch((error) => {
                 console.error("Error:", error);
@@ -35,7 +34,9 @@ export default class ImgCardContain extends Component {
                 this.setState({
                     currentFavs: [...this.state.currentFavs.slice(0, ind), ...this.state.currentFavs.slice(ind + 1)],
                 });
-                this.props.grabFavorites()
+                if (this.props.grabFavorites !== undefined) {
+                    this.props.grabFavorites();
+                }
             })
             .catch((error) => {
                 console.error("Error:", error);
@@ -43,7 +44,7 @@ export default class ImgCardContain extends Component {
     };
 
     state = {
-        currentFavs: []
+        currentFavs: [],
     };
 
     componentDidMount() {
@@ -55,15 +56,16 @@ export default class ImgCardContain extends Component {
     }
 
     render() {
+        let divClass = this.props.boarder ? "ui four stackable cards imgContain" : "ui four stackable cards";
         return (
-            <div className="ui four stackable cards">
+            <div className={divClass}>
                 {this.props.images.map((image) => {
                     return (
-                        <Fragment>
+                        <Fragment key={image.id}>
                             {this.state.currentFavs.find((photo) => photo.id === image.id) ? (
-                                <ImgCard key={image.id} handleCard={this.removeCard} data={image} isFav={true} />
+                                <ImgCard handleCard={this.removeCard} data={image} isFav={true} />
                             ) : (
-                                <ImgCard key={image.id} handleCard={this.likeCard} data={image} isFav={false} />
+                                <ImgCard handleCard={this.likeCard} data={image} isFav={false} />
                             )}
                         </Fragment>
                     );

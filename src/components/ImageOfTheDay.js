@@ -20,11 +20,11 @@ const ImageOfTheDay = (props) => {
                 <div className="ui items">
                     <div className="item">
                         <div onClick={() => setOpen(true)} className="ui medium image">
-                            <img src={props.imageOfTheDay.url} />
+                            <img src={props.imageOfTheDay.url} alt="Img Of The Day" />
                         </div>
                         <div className="content">
                             <p className="header">Title: {props.imageOfTheDay.title}</p>
-                            <div class="meta">
+                            <div className="meta">
                                 <span>Explanation</span>
                             </div>
                             <div className="description">

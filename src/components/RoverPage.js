@@ -11,25 +11,26 @@ class RoverPage extends Component {
     };
 
     componentDidUpdate(previousProps, previousState) {
-        // !FIXME Page calls fetch twice when loading a new search result when not on page one since its calling fetch on new url and the new page num
-        if (previousState.pageNum !== this.state.pageNum) {
-            this.fetchPhotos(this.state.pageNum);
-        }
         if (previousState.urlToSearch !== this.state.urlToSearch) {
-            this.fetchPhotos(1);
+            if (1 !== this.state.pageNum) {
+                this.setState({ pageNum: 1 });
+            } else {
+                this.fetchPhotos();
+            }
+        } else if (previousState.pageNum !== this.state.pageNum) {
+            this.fetchPhotos();
         }
     }
 
-    fetchPhotos = (pageNum) => {
-        console.log("here");
-        fetch(this.state.urlToSearch + `&page=${pageNum}`)
+    fetchPhotos = () => {
+        fetch(this.state.urlToSearch + `&page=${this.state.pageNum}`)
             .then((res) => res.json())
-            .then((images) =>
+            .then((images) => {
                 this.setState({
                     images: images.photos,
-                    pageNum: pageNum,
-                })
-            );
+                });
+                console.log("here");
+            });
     };
 
     getSearch = (urlToSearch) => {
@@ -40,24 +41,31 @@ class RoverPage extends Component {
 
     handleNextPage = () => this.setState({ pageNum: this.state.pageNum + 1 });
 
-    render() {
+    pageButtons = () => {
         return (
             <div>
-                <SortBar getSearch={this.getSearch} roverName={this.state.roverName} />
-                <div>
-                    <button
-                        onClick={this.handlePrevPage}
-                        className="ui button"
-                        disabled={this.state.pageNum > 1 ? false : true}
-                    >
-                        Previous Page
-                    </button>
-                    <button onClick={this.handleNextPage} className="ui button">
-                        Next Page
-                    </button>
-                    <h3>Page {this.state.pageNum}</h3>
-                </div>
-                <ImgCardContain images={this.state.images} />
+                <button
+                    onClick={this.handlePrevPage}
+                    className="ui button pageDiv"
+                    disabled={this.state.pageNum > 1 ? false : true}
+                >
+                    Previous Page
+                </button>
+                <h3 className="pageDiv">Page {this.state.pageNum}</h3>
+                <button onClick={this.handleNextPage} className="ui button pageDiv">
+                    Next Page
+                </button>
+            </div>
+        );
+    };
+
+    render() {
+        return (
+            <div className="mainDivRover">
+                <SortBar getSearch={this.getSearch} roverName={this.state.roverName} apiKey={this.props.apiKey} />
+                <this.pageButtons />
+                <ImgCardContain boarder={true} images={this.state.images} />
+                <this.pageButtons />
             </div>
         );
     }
