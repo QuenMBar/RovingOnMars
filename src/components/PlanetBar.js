@@ -137,6 +137,8 @@ class PlanetBar extends Component {
                                 Size: {obj.diameter} mi
                                 <br />
                                 Could be hazardous: {obj.isHazardous.toString()}
+                                <br />
+                                Distance From Earth: {obj.distance} mi
                             </Popup.Content>
                         </Popup>
                     ))}
