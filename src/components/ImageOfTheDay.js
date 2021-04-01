@@ -9,9 +9,9 @@ const ImageOfTheDay = (props) => {
             <Modal size="large" onClose={() => setOpen(false)} onOpen={() => setOpen(true)} open={open}>
                 <Modal.Content image>
                     {props.imageOfTheDay.hdurl !== undefined ? (
-                        <Image size="fullscreen" src={props.imageOfTheDay.hdurl} wrapped />
+                        <Image src={props.imageOfTheDay.hdurl} wrapped />
                     ) : (
-                        <Image size="fullscreen" src={props.imageOfTheDay.url} wrapped />
+                        <Image src={props.imageOfTheDay.url} wrapped />
                     )}
                 </Modal.Content>
                 <Modal.Actions>
@@ -27,9 +27,9 @@ const ImageOfTheDay = (props) => {
                             <iframe
                                 className="ui medium image"
                                 src={props.imageOfTheDay.url}
-                                frameborder="0"
+                                frameBorder="0"
                                 allow="autoplay; encrypted-media"
-                                allowfullscreen
+                                allowFullScreen
                                 title="video"
                             />
                         ) : props.imageOfTheDay.hdurl !== undefined ? (

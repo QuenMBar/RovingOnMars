@@ -3,6 +3,7 @@ import ImgCardContain from "./ImgCardContain";
 import ImageOfTheDay from "./ImageOfTheDay";
 import { Grid } from "semantic-ui-react";
 import SpaceNotif from "./SpaceNotif";
+import PlanetBar from "./PlanetBar";
 
 export default class HomePage extends Component {
     apiKey = this.props.apiKey;
@@ -35,19 +36,18 @@ export default class HomePage extends Component {
                     <SpaceNotif apiKey={this.apiKey} />
                 </Grid.Column>
                 <Grid.Column width="12">
-                    <div className="mainContain">
-                        <div className="ui headerContain">
-                            <h2>Image of the Day</h2>
-                            <ImageOfTheDay imageOfTheDay={this.state.imageOfTheDay} />
-                        </div>
-                        <div className="ui container homeMain">
-                            <h2>Favorite Images</h2>
-                            <ImgCardContain
-                                boarder={false}
-                                images={this.state.favorites}
-                                grabFavorites={this.grabFavorites}
-                            />
-                        </div>
+                    <div className="ui headerContain">
+                        <h2>Image of the Day</h2>
+                        <ImageOfTheDay imageOfTheDay={this.state.imageOfTheDay} />
+                    </div>
+                    <PlanetBar apiKey={this.apiKey} />
+                    <div className="ui container homeMain">
+                        <h2>Favorite Images</h2>
+                        <ImgCardContain
+                            boarder={false}
+                            images={this.state.favorites}
+                            grabFavorites={this.grabFavorites}
+                        />
                     </div>
                 </Grid.Column>
             </Grid>
