@@ -23,7 +23,7 @@ export default class HomePage extends Component {
     };
 
     grabImageOfTheDay = () => {
-        fetch(`https://api.nasa.gov/planetary/apod?api_key=${this.apiKey}`)
+        fetch(`https://api.nasa.gov/planetary/apod?api_key=${this.apiKey}&thumbs=true`)
             .then((res) => res.json())
             .then((imageOfTheDay) => this.setState({ imageOfTheDay }));
     };

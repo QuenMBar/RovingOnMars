@@ -8,7 +8,11 @@ const ImageOfTheDay = (props) => {
         <Fragment>
             <Modal size="large" onClose={() => setOpen(false)} onOpen={() => setOpen(true)} open={open}>
                 <Modal.Content image>
-                    <Image size="fullscreen" src={props.imageOfTheDay.url} wrapped />
+                    {props.imageOfTheDay.hdurl !== undefined ? (
+                        <Image size="fullscreen" src={props.imageOfTheDay.hdurl} wrapped />
+                    ) : (
+                        <Image size="fullscreen" src={props.imageOfTheDay.url} wrapped />
+                    )}
                 </Modal.Content>
                 <Modal.Actions>
                     <Button onClick={() => setOpen(false)} positive>
@@ -19,9 +23,25 @@ const ImageOfTheDay = (props) => {
             <div className="ImageOfTheDay ui container">
                 <div className="ui items">
                     <div className="item">
-                        <div onClick={() => setOpen(true)} className="ui medium image">
-                            <img src={props.imageOfTheDay.url} alt="Img Of The Day" />
-                        </div>
+                        {props.imageOfTheDay.thumbnail_url !== undefined ? (
+                            <iframe
+                                className="ui medium image"
+                                src={props.imageOfTheDay.url}
+                                frameborder="0"
+                                allow="autoplay; encrypted-media"
+                                allowfullscreen
+                                title="video"
+                            />
+                        ) : props.imageOfTheDay.hdurl !== undefined ? (
+                            <div onClick={() => setOpen(true)} className="ui medium image">
+                                <img src={props.imageOfTheDay.hdurl} alt="Img Of The Day" />
+                            </div>
+                        ) : (
+                            <div onClick={() => setOpen(true)} className="ui medium image">
+                                <img src={props.imageOfTheDay.url} alt="Img Of The Day" />
+                            </div>
+                        )}
+
                         <div className="content">
                             <p className="header">Title: {props.imageOfTheDay.title}</p>
                             <div className="meta">
