@@ -303,6 +303,25 @@
         "launch_date": "2003-06-10",
         "status": "complete"
       }
+    },
+    {
+      "id": 811178,
+      "sol": 1,
+      "camera": {
+        "id": 35,
+        "name": "EDL_DDCAM",
+        "rover_id": 8,
+        "full_name": "Descent Stage Down-Look Camera"
+      },
+      "img_src": "https://mars.nasa.gov/mars2020-raw-images/pub/ods/surface/sol/00001/ids/edr/browse/edl/ESF_0001_0667022258_507ECV_N0010052EDLC00001_0010LUJ01_1200.jpg",
+      "earth_date": "2021-02-19",
+      "rover": {
+        "id": 8,
+        "name": "Perseverance",
+        "landing_date": "2021-02-18",
+        "launch_date": "2020-07-30",
+        "status": "active"
+      }
     }
   ]
 }
