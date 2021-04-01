@@ -25,6 +25,7 @@ export default class HomePage extends Component {
 
     grabImageOfTheDay = () => {
         fetch(`https://api.nasa.gov/planetary/apod?api_key=${this.apiKey}&thumbs=true`)
+            // fetch(`https://api.nasa.gov/planetary/apod?date=2021-03-30&api_key=${this.apiKey}`)
             .then((res) => res.json())
             .then((imageOfTheDay) => this.setState({ imageOfTheDay }));
     };
@@ -35,19 +36,19 @@ export default class HomePage extends Component {
                 <Grid.Column width="4">
                     <SpaceNotif apiKey={this.apiKey} />
                 </Grid.Column>
-                <Grid.Column width="12">
-                    <div className="ui headerContain">
-                        <h2>Image of the Day</h2>
-                        <ImageOfTheDay imageOfTheDay={this.state.imageOfTheDay} />
-                    </div>
-                    <PlanetBar apiKey={this.apiKey} />
-                    <div className="ui container homeMain">
-                        <h2>Favorite Images</h2>
-                        <ImgCardContain
-                            boarder={false}
-                            images={this.state.favorites}
-                            grabFavorites={this.grabFavorites}
-                        />
+                <Grid.Column width="12" as="div">
+                    <h2 className="overlay">Image of the Day</h2>
+                    <ImageOfTheDay grabPhoto={this.grabPhoto} imageOfTheDay={this.state.imageOfTheDay} />
+                    <div className="overlay bottomDiv">
+                        <PlanetBar apiKey={this.apiKey} />
+                        <div className="ui homeMain overlay">
+                            <h2>Favorite Images</h2>
+                            <ImgCardContain
+                                boarder={false}
+                                images={this.state.favorites}
+                                grabFavorites={this.grabFavorites}
+                            />
+                        </div>
                     </div>
                 </Grid.Column>
             </Grid>

@@ -1,4 +1,4 @@
-import React, { Component, Fragment } from "react";
+import React, { Component } from "react";
 import { Image, Popup } from "semantic-ui-react";
 import localImg from "../assets/earth.png";
 
@@ -67,7 +67,7 @@ class PlanetBar extends Component {
             borderRadius: "inherit",
             textAlign: "right",
             position: "absolute",
-            zIndex: 2,
+            zIndex: 6,
         };
     };
 
@@ -125,9 +125,9 @@ class PlanetBar extends Component {
 
     render() {
         return (
-            <Fragment>
-                <h2>Near Earth Objects</h2>
-                <p>A visual representation of how close objects are to earth today.</p>
+            <div className="overlay">
+                <h2 className="overlay">Near Earth Objects</h2>
+                <p className="overlay">A visual representation of how close objects are to earth today.</p>
                 <div style={this.containerStyles}>
                     <Popup trigger={<Image src={localImg} style={this.earthStyle} alt="Earth" />}>
                         <Popup.Header>Earth</Popup.Header>
@@ -145,7 +145,7 @@ class PlanetBar extends Component {
                         </Popup>
                     ))}
                 </div>
-            </Fragment>
+            </div>
         );
     }
 }

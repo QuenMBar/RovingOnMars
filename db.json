@@ -58,25 +58,6 @@
       }
     },
     {
-      "id": 58871,
-      "sol": 10,
-      "camera": {
-        "id": 23,
-        "name": "CHEMCAM",
-        "rover_id": 5,
-        "full_name": "Chemistry and Camera Complex"
-      },
-      "img_src": "http://mars.jpl.nasa.gov/msl-raw-images/proj/msl/redops/ods/surface/sol/00010/opgs/edr/ccam/CR0_398381577EDR_F0030000CCAM05010M_.JPG",
-      "earth_date": "2012-08-16",
-      "rover": {
-        "id": 5,
-        "name": "Curiosity",
-        "landing_date": "2012-08-06",
-        "launch_date": "2011-11-26",
-        "status": "active"
-      }
-    },
-    {
       "id": 266769,
       "sol": 10,
       "camera": {
@@ -320,6 +301,25 @@
         "name": "Perseverance",
         "landing_date": "2021-02-18",
         "launch_date": "2020-07-30",
+        "status": "active"
+      }
+    },
+    {
+      "id": 58872,
+      "sol": 10,
+      "camera": {
+        "id": 23,
+        "name": "CHEMCAM",
+        "rover_id": 5,
+        "full_name": "Chemistry and Camera Complex"
+      },
+      "img_src": "http://mars.jpl.nasa.gov/msl-raw-images/proj/msl/redops/ods/surface/sol/00010/opgs/edr/ccam/CR0_398381468EDR_F0030000CCAM05010M_.JPG",
+      "earth_date": "2012-08-16",
+      "rover": {
+        "id": 5,
+        "name": "Curiosity",
+        "landing_date": "2012-08-06",
+        "launch_date": "2011-11-26",
         "status": "active"
       }
     }
