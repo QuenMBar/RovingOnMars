@@ -129,7 +129,9 @@ class PlanetBar extends Component {
                 <h2>Near Earth Objects</h2>
                 <p>A visual representation of how close objects are to earth today.</p>
                 <div style={this.containerStyles}>
-                    <Image src={localImg} style={this.earthStyle} alt="Earth" />
+                    <Popup trigger={<Image src={localImg} style={this.earthStyle} alt="Earth" />}>
+                        <Popup.Header>Earth</Popup.Header>
+                    </Popup>
                     {this.state.objArr.map((obj, i) => (
                         <Popup key={i} trigger={<div style={obj.styleWithColor}></div>}>
                             <Popup.Header>{obj.name}</Popup.Header>
