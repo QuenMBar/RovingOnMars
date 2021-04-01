@@ -72,14 +72,14 @@ export default class SpaceNotif extends Component {
 
     render() {
         return (
-            <Fragment>
+            <div className="overlay">
                 <h2>SPACE NOTIFICATIONS!</h2>
                 <Card.Group centered itemsPerRow={1} stackable>
                     {this.state.notiifs.map((note, i) => (
                         <NotifCard key={i} notifs={note} />
                     ))}
                 </Card.Group>
-            </Fragment>
+            </div>
         );
     }
 }
