@@ -1,7 +1,12 @@
 import React, { Fragment } from "react";
 import { Card, Icon, Modal, Button } from "semantic-ui-react";
 import ReactMarkdown from "react-markdown";
+import PropType from "prop-types";
 
+/**
+ * Functional component that handles creating a notification card and its corresponding modal
+ * @augments {Component<Props, State>}
+ */
 const NotifCard = (props) => {
     const [open, setOpen] = React.useState(false);
     return (
@@ -30,6 +35,15 @@ const NotifCard = (props) => {
             </Card>
         </Fragment>
     );
+};
+
+NotifCard.propTypes = {
+    /** Notification to display */
+    notifs: PropType.shape({
+        header: PropType.string,
+        shortDescription: PropType.string,
+        description: PropType.string,
+    }).isRequired,
 };
 
 export default NotifCard;

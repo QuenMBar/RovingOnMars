@@ -36,14 +36,13 @@ Project needs
 
 ## APIS
 
-| Api                   | Example                                                                                                    |
-| --------------------- | ---------------------------------------------------------------------------------------------------------- |
-| Mars Rover Photos     | https://api.nasa.gov/mars-photos/api/v1/rovers/curiosity/photos?sol=1000&api_key=DEMO_KEY                  |
-| APOD                  | https://api.nasa.gov/planetary/apod?api_key=DEMO_KEY                                                       |
-| DONKI                 | https://api.nasa.gov/DONKI/notifications?startDate=2014-05-01&endDate=2014-05-08&type=all&api_key=DEMO_KEY |
-| Asteroids - NeoWs     | https://api.nasa.gov/neo/rest/v1/feed?start_date=2015-09-07&end_date=2015-09-08&api_key=DEMO_KEY           |
-| InSight: Mars Weather | https://api.nasa.gov/insight_weather/?api_key=DEMO_KEY&feedtype=json&ver=1.0                               |
+| Api               | Example                                                                                                    |
+| ----------------- | ---------------------------------------------------------------------------------------------------------- |
+| Mars Rover Photos | https://api.nasa.gov/mars-photos/api/v1/rovers/curiosity/photos?sol=1000&api_key=DEMO_KEY                  |
+| APOD              | https://api.nasa.gov/planetary/apod?api_key=DEMO_KEY                                                       |
+| DONKI             | https://api.nasa.gov/DONKI/notifications?startDate=2014-05-01&endDate=2014-05-08&type=all&api_key=DEMO_KEY |
+| Asteroids - NeoWs | https://api.nasa.gov/neo/rest/v1/feed?start_date=2015-09-07&end_date=2015-09-08&api_key=DEMO_KEY           |
 
 ## JSON Server
 
-Using an json server to persist the favorites of users between refreshes
+Using an json server to persist the favorite photos of users between refreshes

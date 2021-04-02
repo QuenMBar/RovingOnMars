@@ -1,8 +1,19 @@
 import React, { Component } from "react";
 import { Image, Popup } from "semantic-ui-react";
 import localImg from "../assets/earth.png";
+import PropType from "prop-types";
 
+/**
+ * The plant bar takes in an array of near earth objects and uses them to create a bar that visually shows how close they are.
+ * @augments {Component<Props, State>}
+ */
 class PlanetBar extends Component {
+    static propTypes = {
+        /** The key used to access nasa apis */
+        apiKey: PropType.string.isRequired,
+    };
+
+    // Colors taken from material ui docs for consistency of random colors
     arrayOfColors = [
         "#EF5350",
         "#EC407A",
@@ -45,8 +56,10 @@ class PlanetBar extends Component {
         "#37474F",
     ];
 
+    // Scale of the bar.  Is the miles equal to 0.5 astronomical units
     scale = 46480000;
 
+    // Style for the div that contains all the objects
     containerStyles = {
         height: 20,
         width: "80%",
@@ -58,6 +71,26 @@ class PlanetBar extends Component {
         position: "relative",
     };
 
+    // Style for the earth element
+    earthStyle = {
+        height: 40,
+        width: 40,
+        marginLeft: `${-1}%`,
+        borderRadius: "inherit",
+        textAlign: "right",
+        position: "absolute",
+        bottom: -10,
+        zIndex: 1,
+    };
+
+    // State for the
+    state = { objArr: [] };
+
+    /**
+     * Takes in the percent along the bar it should be and returns the correct css along with a random color for the object
+     * @param {number} percent
+     * @returns {object}
+     */
     createFillerStyle = (percent) => {
         return {
             height: 20,
@@ -71,20 +104,9 @@ class PlanetBar extends Component {
         };
     };
 
-    earthStyle = {
-        height: 40,
-        width: 40,
-        marginLeft: `${-1}%`,
-        borderRadius: "inherit",
-        textAlign: "right",
-        position: "absolute",
-        bottom: -10,
-        zIndex: 1,
-    };
-
-    state = { objArr: [] };
-
+    // When the component mounts, make the api call and then add all the objects to the state
     componentDidMount() {
+        // Get current date
         let ourDate = new Date();
         let date = ourDate.getFullYear() + "-";
         let dateMonth = ourDate.getMonth() + 1;
@@ -100,11 +122,13 @@ class PlanetBar extends Component {
             date += `${dateDay}`;
         }
 
+        // Use the date to call the api for the given day
         fetch(`https://api.nasa.gov/neo/rest/v1/feed?api_key=${this.props.apiKey}&start_date=${date}&end_date=${date}`)
             .then((res) => res.json())
             .then((data) => {
                 let arrayOnDate = data.near_earth_objects[date];
                 let reducedArray = [];
+                // Loop through the results, grabbing the correct css and making an object of the relevant data
                 arrayOnDate.forEach((obj) => {
                     reducedArray.push({
                         name: obj.name,
@@ -133,6 +157,7 @@ class PlanetBar extends Component {
                         <Popup.Header>Earth</Popup.Header>
                     </Popup>
                     {this.state.objArr.map((obj, i) => (
+                        // Create a popup when you hover over the objects
                         <Popup key={i} trigger={<div style={obj.styleWithColor}></div>}>
                             <Popup.Header>{obj.name}</Popup.Header>
                             <Popup.Content>

@@ -1,25 +1,6 @@
 {
   "photos": [
     {
-      "id": 813091,
-      "sol": 10,
-      "camera": {
-        "id": 38,
-        "name": "NAVCAM_LEFT",
-        "rover_id": 8,
-        "full_name": "Navigation Camera - Left"
-      },
-      "img_src": "https://mars.nasa.gov/mars2020-raw-images/pub/ods/surface/sol/00010/ids/edr/browse/ncam/NLF_0010_0667835353_914ECM_N0030000NCAM00130_01_295J01_1200.jpg",
-      "earth_date": "2021-02-28",
-      "rover": {
-        "id": 8,
-        "name": "Perseverance",
-        "landing_date": "2021-02-18",
-        "launch_date": "2020-07-30",
-        "status": "active"
-      }
-    },
-    {
       "id": 811197,
       "sol": 1,
       "camera": {
@@ -305,21 +286,21 @@
       }
     },
     {
-      "id": 58872,
-      "sol": 10,
+      "id": 813115,
+      "sol": 11,
       "camera": {
-        "id": 23,
-        "name": "CHEMCAM",
-        "rover_id": 5,
-        "full_name": "Chemistry and Camera Complex"
+        "id": 41,
+        "name": "MCZ_LEFT",
+        "rover_id": 8,
+        "full_name": "Mast Camera Zoom - Left"
       },
-      "img_src": "http://mars.jpl.nasa.gov/msl-raw-images/proj/msl/redops/ods/surface/sol/00010/opgs/edr/ccam/CR0_398381468EDR_F0030000CCAM05010M_.JPG",
-      "earth_date": "2012-08-16",
+      "img_src": "https://mars.nasa.gov/mars2020-raw-images/pub/ods/surface/sol/00011/ids/fdr/browse/zcam/ZLF_0011_0667929665_064FDR_N0030000ZCAM00015_034085J01_1200.jpg",
+      "earth_date": "2021-03-01",
       "rover": {
-        "id": 5,
-        "name": "Curiosity",
-        "landing_date": "2012-08-06",
-        "launch_date": "2011-11-26",
+        "id": 8,
+        "name": "Perseverance",
+        "landing_date": "2021-02-18",
+        "launch_date": "2020-07-30",
         "status": "active"
       }
     }

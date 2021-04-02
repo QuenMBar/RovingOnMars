@@ -1,12 +1,23 @@
-import React, { Component, Fragment } from "react";
+import React, { Component } from "react";
 import { Card } from "semantic-ui-react";
 import NotifCard from "./NotifCard";
+import PropType from "prop-types";
 
+/**
+ * Notification container for the space notifications.
+ * @augments {Component<Props, State>}
+ */
 export default class SpaceNotif extends Component {
+    static propTypes = {
+        /** The key used to access nasa apis */
+        apiKey: PropType.string.isRequired,
+    };
+
     state = {
         notiifs: [],
     };
 
+    // Link the shorthand to the full names
     type = {
         FLR: "Solar Flare",
         SEP: "Solar Energetic Particle",
@@ -18,6 +29,7 @@ export default class SpaceNotif extends Component {
         Report: "Report",
     };
 
+    // When the components mount, fetch the notification data
     componentDidMount() {
         fetch(
             `https://api.nasa.gov/DONKI/notifications?startDate=${this.getWeek(false)}&endDate=${this.getWeek(
@@ -30,6 +42,10 @@ export default class SpaceNotif extends Component {
             });
     }
 
+    /**
+     * Create a notification object that can be passed to the cards
+     * @param {object} notifsRaw
+     */
     parseCards = (notifsRaw) => {
         let notiifs = [];
         notifsRaw.forEach((noteRaw) => {
@@ -45,6 +61,7 @@ export default class SpaceNotif extends Component {
         this.setState({ notiifs });
     };
 
+    // Get either the previous or next week date
     getWeek = (isNext) => {
         let ourDate = new Date();
         let pastDate;

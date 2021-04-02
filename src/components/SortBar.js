@@ -1,7 +1,23 @@
 import React, { Component } from "react";
 import { Button, Form, Input, Radio, Select } from "semantic-ui-react";
+import PropType from "prop-types";
 
+/**
+ * Sort bar to be used by the render pages.  Can sort by camera and date (both earth and mars).  Treats the
+ * inputs as controlled.
+ * @augments {Component<Props, State>}
+ */
 export default class SortBar extends Component {
+    static propTypes = {
+        /** The key used to access nasa apis */
+        apiKey: PropType.string.isRequired,
+        /** The rover for which ever page we are on */
+        roverName: PropType.string.isRequired,
+        /** Callback to pass back the new url */
+        getSearch: PropType.func,
+    };
+
+    // array to link rovers to which cameras they have
     roverDetails = [
         {
             name: "perseverance",
@@ -23,6 +39,7 @@ export default class SortBar extends Component {
         { name: "spirit", cameras: ["FHAZ", "RHAZ", "NAVCAM", "PANCAM", "MINITES"] },
     ];
 
+    // Shorthand camera names to the full name
     cameraNames = {
         FHAZ: "Front Hazard Avoidance Camera",
         RHAZ: "Rear Hazard Avoidance Camera",
@@ -45,14 +62,22 @@ export default class SortBar extends Component {
         SHERLOC_WATSON: "Sherloc Watson Camera",
     };
 
+    /**
+     * Constructor since things need to be setup when the component first starts
+     * @constructor
+     * @param {object} props
+     */
     constructor(props) {
         super(props);
+        // Create the camera options available
         let cameras = this.roverDetails.find((rover) => rover.name === props.roverName).cameras;
         let options = [];
         options.push({ key: 0, text: "None", value: "none" });
         cameras.forEach((camera, i) => {
             options.push({ key: i + 1, text: this.cameraNames[camera], value: camera });
         });
+
+        // Gets the date from 7 days ago and auto sets the earth date to that (Somewhat deprecated since we start on sol now)
         let ourDate = new Date();
         let pastDate = ourDate.getDate() - 7;
         ourDate.setDate(pastDate);
@@ -69,6 +94,8 @@ export default class SortBar extends Component {
         } else {
             date += `${dateDay}`;
         }
+
+        // Set states
         this.apiKey = this.props.apiKey;
         this.state = {
             roverName: this.props.roverName,
@@ -83,16 +110,23 @@ export default class SortBar extends Component {
         };
     }
 
+    // Handle any changes of data
     handleCameraChange = (e, { value }) => this.setState({ selectedCamera: value });
     handleRadioChange = (e, { value }) => this.setState({ dateType: value });
     handleDateChange = (e, { value }) => this.setState({ date: value });
     handleSolChange = (e, { value }) => this.setState({ sol: value });
 
+    /**
+     * On Submit, it checks all the felids to see if they're valid, then creates the new URL to be used and uses the
+     * callback provided to pass it back to the rover page
+     */
     handleSub = () => {
         let baseURL = `https://api.nasa.gov/mars-photos/api/v1/rovers/${this.state.roverName.toLowerCase()}/photos?api_key=${
             this.apiKey
         }`;
+
         if (this.state.dateType === "0") {
+            // Regex to check if the date format is YYYY-MM-DD
             const regex = new RegExp("^[0-9]{4}[-]{1}[0-1]{1}[0-9]{1}[-]{1}[0-3]{1}[0-9]$");
             if (regex.test(this.state.date)) {
                 baseURL += `&earth_date=${this.state.date}`;
@@ -102,12 +136,14 @@ export default class SortBar extends Component {
                     });
                 }
             } else {
+                // If it is wrong, show an error message
                 this.setState({
                     invalidDate: true,
                 });
                 return;
             }
         } else {
+            // Regex to check if its a number
             const regex = new RegExp("^[0-9]*$");
             if (regex.test(this.state.sol)) {
                 baseURL += `&sol=${this.state.sol}`;
@@ -117,18 +153,24 @@ export default class SortBar extends Component {
                     });
                 }
             } else {
+                // If it is wrong, show an error message
                 this.setState({
                     invalidSol: true,
                 });
                 return;
             }
         }
+
+        // Add the camera to the url if there is one
         if (this.state.selectedCamera !== "none") {
             baseURL += `&camera=${this.state.selectedCamera}`;
         }
+
+        // Call the callback
         this.props.getSearch(baseURL);
     };
 
+    // When the component first mounts, just pass back a basic url
     componentDidMount() {
         let returnURL = `https://api.nasa.gov/mars-photos/api/v1/rovers/${this.state.roverName.toLowerCase()}/photos?api_key=${
             this.apiKey
@@ -166,6 +208,7 @@ export default class SortBar extends Component {
                             onChange={this.handleRadioChange}
                         />
                     </Form.Group>
+                    {/* Depending on the current states, display the correct input */}
                     {this.state.dateType === "0" ? (
                         this.state.invalidDate ? (
                             <Form.Field
